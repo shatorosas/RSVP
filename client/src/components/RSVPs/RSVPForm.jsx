@@ -2,12 +2,12 @@ import React from "react";
 import { reduxForm, Field } from "redux-form";
 import { Link } from "react-router-dom";
 import validateEmails from "../../utils/validateEmails";
-import SurveyField from "./SurveyField";
+import FormField from "./FormField";
 import formFields from "./formFields";
 import { fetchSurvey } from "../../actions";
 import { connect } from "react-redux";
 
-class SurveyForm extends React.Component {
+class RSVPForm extends React.Component {
   renderFields() {
     return (
       <div>
@@ -17,7 +17,7 @@ class SurveyForm extends React.Component {
               key={field.name}
               type="text"
               {...field}
-              component={SurveyField}
+              component={FormField}
             />
           );
         })}
@@ -84,25 +84,25 @@ const mapStateToProps = (state, ownProps) => {
   return {};
 };
 
-SurveyForm = reduxForm({
+RSVPForm = reduxForm({
   validate,
-  form: "surveyForm",
+  form: "rsvpForm",
   destroyOnUnmount: false
-})(SurveyForm);
+})(RSVPForm);
 
-SurveyForm = connect(
+RSVPForm = connect(
   mapStateToProps,
   { fetchSurvey }
-)(SurveyForm);
-export default SurveyForm;
+)(RSVPForm);
+export default RSVPForm;
 /*
 export default reduxForm({
   validate,
-  form: "surveyForm",
+  form: "rsvpForm",
   destroyOnUnmount: false
 })(
   connect(
     mapStateToProps,
     { fetchSurvey }
-  )(SurveyForm)
+  )(RSVPForm)
 );*/

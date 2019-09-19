@@ -1,22 +1,22 @@
 import React from "react";
 import { reduxForm } from "redux-form";
-import SurveyForm from "./SurveyForm";
-import SurveyFormReview from "./SurveyFormReview";
+import RSVPForm from "./RSVPForm";
+import RSVPFormReview from "./RSVPFormReview";
 
-class SurveyNew extends React.Component {
+class RSVPWizard extends React.Component {
   state = { showFormReview: false, selectedSurvey: null };
 
   renderContent() {
     if (this.state.showFormReview) {
       return (
-        <SurveyFormReview
+        <RSVPFormReview
           onBack={() => this.setState({ showFormReview: false })}
         />
       );
     }
 
     return (
-      <SurveyForm
+      <RSVPForm
         selectedSurveyId={this.props.match.params.surveyId}
         onShowFormReview={() => this.setState({ showFormReview: true })}
       />
@@ -35,4 +35,4 @@ class SurveyNew extends React.Component {
   }
 }
 
-export default reduxForm({ form: "surveyForm" })(SurveyNew);
+export default reduxForm({ form: "rsvpForm" })(RSVPWizard);

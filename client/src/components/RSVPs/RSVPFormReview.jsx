@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import formFields from "./formFields";
 import * as actions from "../../actions";
 
-const SurveyFormReview = ({ onBack, formValues, submitSurvey, saveSurvey }) => {
+const RSVPFormReview = ({ onBack, formValues, submitSurvey, saveSurvey }) => {
   const component = formFields.map(({ name, label }) => {
     return (
       <div key={name}>
@@ -57,11 +57,11 @@ const SurveyFormReview = ({ onBack, formValues, submitSurvey, saveSurvey }) => {
 
 function mapStateToProps(state) {
   return {
-    formValues: state.form.surveyForm.values
+    formValues: state.form.rsvpForm.values
   };
 }
 
 export default connect(
   mapStateToProps,
   actions
-)(SurveyFormReview);
+)(RSVPFormReview);

@@ -6,7 +6,7 @@ import history from "../history";
 
 import Header from "./Header";
 import Landing from "./Landing";
-import SurveyNew from "./surveys/SurveyNew";
+import RSVPWizard from "./RSVPs/RSVPWizard";
 import Dashboard from "./Dashboard";
 
 class App extends React.Component {
@@ -29,8 +29,8 @@ class App extends React.Component {
           <Header />
           <Route path="/" exact component={Landing} />
           <div style={{ height: "100vh", width: "100%", overflow: "auto" }}>
-            <Route path="/surveys/new" exact component={SurveyNew} />
-            <Route path="/surveys/new/:surveyId" exact component={SurveyNew} />
+            <Route path="/surveys/new" exact component={RSVPWizard} />
+            <Route path="/surveys/new/:surveyId" exact component={RSVPWizard} />
             <Route path="/surveys" exact component={Dashboard} />
           </div>
         </Router>
