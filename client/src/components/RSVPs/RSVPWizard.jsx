@@ -27,7 +27,12 @@ class RSVPWizard extends React.Component {
     return (
       <div
         className="container white"
-        style={{ padding: "20px", height: "450px", position: "relative" }}
+        style={{
+          padding: "20px",
+          marginTop: "20px",
+          height: "450px",
+          position: "relative"
+        }}
       >
         {this.renderContent()}
       </div>
