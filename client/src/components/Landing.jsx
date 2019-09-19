@@ -3,8 +3,8 @@ import React from "react";
 const Landing = () => {
   return (
     <div style={{ textAlign: "center" }}>
-      <h1>RSVPer!</h1>
-      Send RSVPs to anyone you want!
+      <h1>RSVP'er!</h1>
+      Send RSVP's to anyone you want!
     </div>
   );
 };

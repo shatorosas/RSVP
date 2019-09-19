@@ -26,7 +26,8 @@ class SurveyNew extends React.Component {
   render() {
     return (
       <div
-        className="grey lighten-3" style={{padding:"20px"}}
+        className="container white"
+        style={{ padding: "20px", height: "450px", position: "relative" }}
       >
         {this.renderContent()}
       </div>

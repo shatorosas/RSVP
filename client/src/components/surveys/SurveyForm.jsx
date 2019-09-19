@@ -30,14 +30,30 @@ class SurveyForm extends React.Component {
       <div>
         <form onSubmit={this.props.handleSubmit(this.props.onShowFormReview)}>
           {this.renderFields()}
-          <Link to="/surveys" className="red waves-effect waves-light btn white-text">
-            <i className="material-icons left">cancel</i>
-            Cancel
-          </Link>
-          <button type="submit" className="teal waves-effect waves-light btn right white-text">
-            Next
-            <i className="material-icons right">done</i>
-          </button>
+          <div
+            style={{
+              padding: "20px",
+              left: "0px",
+              bottom: "0px",
+              position: "absolute",
+              width: "100%"
+            }}
+          >
+            <Link
+              to="/surveys"
+              className="red waves-effect waves-light btn white-text"
+            >
+              <i className="material-icons left">cancel</i>
+              Cancel
+            </Link>
+            <button
+              type="submit"
+              className="teal waves-effect waves-light btn right white-text"
+            >
+              Next
+              <i className="material-icons right">done</i>
+            </button>
+          </div>
         </form>
       </div>
     );

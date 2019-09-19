@@ -78,7 +78,7 @@ class Header extends React.Component {
     return (
       <div>
         <ul id="dropdown1" className="dropdown-content">
-        <li>
+          <li>
             <Link to="/">
               <i className="material-icons" style={{ margin: "0 2px 0 0" }}>
                 home
@@ -114,7 +114,7 @@ class Header extends React.Component {
               style={{ height: "45px" }}
             >
               <img
-                alt="emaily"
+                alt="rsvper"
                 src="logo.png"
                 style={{
                   marginTop: "10px",

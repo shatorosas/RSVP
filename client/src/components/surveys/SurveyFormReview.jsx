@@ -18,7 +18,15 @@ const SurveyFormReview = ({ onBack, formValues, submitSurvey, saveSurvey }) => {
       <h5>Please confirm your entries </h5>
       <div>
         {component}
-        <div style={{ paddingTop: "20px" }}>
+        <div
+          style={{
+            padding: "20px",
+            left: "0px",
+            bottom: "0px",
+            position: "absolute",
+            width: "100%"
+          }}
+        >
           <button
             className="yellow darken-3 waves-effect btn waves-light white-text"
             onClick={onBack}
@@ -35,7 +43,7 @@ const SurveyFormReview = ({ onBack, formValues, submitSurvey, saveSurvey }) => {
           </button>
           <button
             className="green waves-effect waves-light btn right white-text"
-            style={{marginRight:"10px"}}
+            style={{ marginRight: "10px" }}
             onClick={() => saveSurvey(formValues)}
           >
             Save Draft

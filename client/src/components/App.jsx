@@ -22,19 +22,18 @@ class App extends React.Component {
           backgroundImage: `url(${background})`,
           height: "100vh",
           backgroundSize: "cover",
-          backgroundRepeat: "repeat",
-          backgroundPosition: "top center"
+          overflow: "hidden"
         }}
       >
-        <div className="container">
-          <Router history={history}>
-            <Header />
-            <Route path="/" exact component={Landing} />
+        <Router history={history}>
+          <Header />
+          <Route path="/" exact component={Landing} />
+          <div style={{ height: "100vh", width: "100%", overflow: "auto" }}>
             <Route path="/surveys/new" exact component={SurveyNew} />
             <Route path="/surveys/new/:surveyId" exact component={SurveyNew} />
             <Route path="/surveys" exact component={Dashboard} />
-          </Router>
-        </div>
+          </div>
+        </Router>
       </div>
     );
   }

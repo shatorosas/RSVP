@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { fetchSurveys } from "../../actions";
 import ReactApexChart from "react-apexcharts";
 import { Link } from "react-router-dom";
-import { Scrollbars } from "react-custom-scrollbars";
 
 class SurveyList extends React.Component {
   componentDidMount() {
@@ -17,11 +16,7 @@ class SurveyList extends React.Component {
 
       var conf = {
         options: {
-          labels: [
-            `Yes: ${survey.yes}`,
-            `No: ${survey.yes}`,
-            `Not responded: ${notResponded}`
-          ],
+          labels: ["Yes", "No", "Not responded"],
           colors: ["#3EAD26", "#C40404", "#FFC300"],
           legend: {
             position: "bottom",
@@ -52,10 +47,8 @@ class SurveyList extends React.Component {
               />
             )}
             <div className="card-stacked">
-              <div className="card-content">
-                <Scrollbars style={{ height: "180px", width: "100%" }}>
-                  <p>{survey.body}</p>
-                </Scrollbars>
+              <div className="card-content" style={{ overflow: "auto" }}>
+                <p>{survey.body}</p>
               </div>
               <div className="card-action">
                 <Link
@@ -77,11 +70,7 @@ class SurveyList extends React.Component {
   }
 
   render() {
-    return (
-      <Scrollbars style={{ height: "93vh", width: "100%" }}>
-        <div className="row">{this.renderSurveys()}</div>
-      </Scrollbars>
-    );
+    return <div className="row container">{this.renderSurveys()}</div>;
   }
 }
 
