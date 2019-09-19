@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 const RecipientSchema = require("./Recipient");
 
-const surveySchema = new Schema({
+const rsvpSchema = new Schema({
   userId: String,
   title: String,
   body: String,
@@ -18,4 +18,4 @@ const surveySchema = new Schema({
   totalRecipients: { type: Number, default: 0 }
 });
 
-mongoose.model("surveys", surveySchema);
+mongoose.model("rsvps", rsvpSchema);

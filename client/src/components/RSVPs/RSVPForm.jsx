@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import validateEmails from "../../utils/validateEmails";
 import FormField from "./FormField";
 import formFields from "./formFields";
-import { fetchSurvey } from "../../actions";
+import { fetchRSVP } from "../../actions";
 import { connect } from "react-redux";
 
 class RSVPForm extends React.Component {
@@ -40,7 +40,7 @@ class RSVPForm extends React.Component {
             }}
           >
             <Link
-              to="/surveys"
+              to="/rsvps"
               className="red waves-effect waves-light btn white-text"
             >
               <i className="material-icons left">cancel</i>
@@ -74,12 +74,12 @@ function validate(values) {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  if (ownProps.selectedSurveyId) {
-    const selectedSurvey = state.surveys.find(survey => {
-      return survey._id === ownProps.selectedSurveyId;
+  if (ownProps.selectedRSVPId) {
+    const selectedRSVP = state.rsvps.find(rsvp => {
+      return rsvp._id === ownProps.selectedRSVPId;
     });
 
-    return { initialValues: selectedSurvey };
+    return { initialValues: selectedRSVP };
   }
   return {};
 };
@@ -92,7 +92,7 @@ RSVPForm = reduxForm({
 
 RSVPForm = connect(
   mapStateToProps,
-  { fetchSurvey }
+  { fetchRSVP }
 )(RSVPForm);
 export default RSVPForm;
 /*
@@ -103,6 +103,6 @@ export default reduxForm({
 })(
   connect(
     mapStateToProps,
-    { fetchSurvey }
+    { fetchRSVP }
   )(RSVPForm)
 );*/

@@ -3,12 +3,17 @@ import { connect } from "react-redux";
 import formFields from "./formFields";
 import * as actions from "../../actions";
 
-const RSVPFormReview = ({ onBack, formValues, submitSurvey, saveSurvey }) => {
-  const component = formFields.map(({ name, label }) => {
+const RSVPFormReview = ({ onBack, formValues, submitRSVP, saveRSVP }) => {
+  const component = formFields.map(({ name, label, multiline }) => {
+    console.log(multiline);
     return (
       <div key={name}>
         <label>{label}</label>
-        <div>{formValues[name]}</div>
+        <div
+          style={multiline ? { maxHeight: "100px", overflow: "auto" } : null}
+        >
+          {formValues[name]}
+        </div>
       </div>
     );
   });
@@ -36,15 +41,15 @@ const RSVPFormReview = ({ onBack, formValues, submitSurvey, saveSurvey }) => {
           </button>
           <button
             className="teal waves-effect waves-light btn right white-text"
-            onClick={() => submitSurvey(formValues)}
+            onClick={() => submitRSVP(formValues)}
           >
-            Send Survey
+            Send RSVP
             <i className="material-icons right">email</i>
           </button>
           <button
             className="green waves-effect waves-light btn right white-text"
             style={{ marginRight: "10px" }}
-            onClick={() => saveSurvey(formValues)}
+            onClick={() => saveRSVP(formValues)}
           >
             Save Draft
             <i className="material-icons right">save</i>

@@ -1,17 +1,17 @@
 import React from "react";
 import { connect } from "react-redux";
-import { fetchSurveys } from "../../actions";
+import { fetchRSVPs } from "../../actions";
 import ReactApexChart from "react-apexcharts";
 import { Link } from "react-router-dom";
 
-class SurveyList extends React.Component {
+class RSVPList extends React.Component {
   componentDidMount() {
-    this.props.fetchSurveys();
+    this.props.fetchRSVPs();
   }
 
-  renderSurveys() {
-    return this.props.surveys.reverse().map(survey => {
-      let notResponded = (survey.totalRecipients || 0) - survey.yes - survey.no;
+  renderRSVPs() {
+    return this.props.rsvps.reverse().map(rsvp => {
+      let notResponded = (rsvp.totalRecipients || 0) - rsvp.yes - rsvp.no;
       notResponded = notResponded < 0 ? 0 : notResponded;
 
       var conf = {
@@ -23,14 +23,14 @@ class SurveyList extends React.Component {
             horizontalAlign: "center"
           }
         },
-        series: [survey.yes, survey.no, notResponded]
+        series: [rsvp.yes, rsvp.no, notResponded]
       };
 
       return (
-        <div key={survey._id} className="col s12 m12 l12">
-          <h5 className="header">{survey.title}</h5>
+        <div key={rsvp._id} className="col s12 m12 l12">
+          <h5 className="header">{rsvp.title}</h5>
           <div className="card horizontal" style={{ height: "300px" }}>
-            {survey.status === 1 ? (
+            {rsvp.status === 1 ? (
               <ReactApexChart
                 style={{ marginTop: "20px" }}
                 options={conf.options}
@@ -48,13 +48,13 @@ class SurveyList extends React.Component {
             )}
             <div className="card-stacked">
               <div className="card-content" style={{ overflow: "auto" }}>
-                <p>{survey.body}</p>
+                <p>{rsvp.body}</p>
               </div>
               <div className="card-action">
                 <Link
-                  to={`/surveys/new/${survey._id}`}
+                  to={`/rsvp/${rsvp._id}`}
                   className={
-                    survey.status === 0
+                    rsvp.status === 0
                       ? "waves-effect waves-light btn right"
                       : "waves-effect waves-light btn right disabled"
                   }
@@ -70,15 +70,15 @@ class SurveyList extends React.Component {
   }
 
   render() {
-    return <div className="row container">{this.renderSurveys()}</div>;
+    return <div className="row container">{this.renderRSVPs()}</div>;
   }
 }
 
-function mapStateToProps({ surveys }) {
-  return { surveys };
+function mapStateToProps({ rsvps }) {
+  return { rsvps };
 }
 
 export default connect(
   mapStateToProps,
-  { fetchSurveys }
-)(SurveyList);
+  { fetchRSVPs }
+)(RSVPList);

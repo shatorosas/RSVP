@@ -87,11 +87,11 @@ class Header extends React.Component {
             </Link>
           </li>
           <li>
-            <Link to="/surveys">
+            <Link to="/rsvps">
               <i className="material-icons" style={{ margin: "0 2px 0 0" }}>
                 library_books
               </i>
-              Surveys
+              RSVPs
             </Link>
           </li>
           <li>
@@ -109,7 +109,7 @@ class Header extends React.Component {
         <nav>
           <div className="nav-wrapper">
             <Link
-              to={this.props.auth ? "/surveys" : "/"}
+              to={this.props.auth ? "/rsvps" : "/"}
               className="left "
               style={{ height: "45px" }}
             >

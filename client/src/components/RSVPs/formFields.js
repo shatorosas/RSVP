@@ -1,7 +1,7 @@
 export default [
   {
     name: "title",
-    label: "Survey Title:"
+    label: "RSVP Title:"
   },
   {
     name: "subject",
@@ -9,7 +9,8 @@ export default [
   },
   {
     name: "body",
-    label: "Email Body:"
+    label: "Email Body:",
+    multiline: true
   },
   {
     name: "emails",

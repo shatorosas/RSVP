@@ -4,7 +4,7 @@ import RSVPForm from "./RSVPForm";
 import RSVPFormReview from "./RSVPFormReview";
 
 class RSVPWizard extends React.Component {
-  state = { showFormReview: false, selectedSurvey: null };
+  state = { showFormReview: false, selectedRSVP: null };
 
   renderContent() {
     if (this.state.showFormReview) {
@@ -17,7 +17,7 @@ class RSVPWizard extends React.Component {
 
     return (
       <RSVPForm
-        selectedSurveyId={this.props.match.params.surveyId}
+        selectedRSVPId={this.props.match.params.rsvpId}
         onShowFormReview={() => this.setState({ showFormReview: true })}
       />
     );

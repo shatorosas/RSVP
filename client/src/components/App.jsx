@@ -29,9 +29,9 @@ class App extends React.Component {
           <Header />
           <Route path="/" exact component={Landing} />
           <div style={{ height: "100vh", width: "100%", overflow: "auto" }}>
-            <Route path="/surveys/new" exact component={RSVPWizard} />
-            <Route path="/surveys/new/:surveyId" exact component={RSVPWizard} />
-            <Route path="/surveys" exact component={Dashboard} />
+            <Route path="/rsvp" exact component={RSVPWizard} />
+            <Route path="/rsvp/:rsvpId" exact component={RSVPWizard} />
+            <Route path="/rsvps" exact component={Dashboard} />
           </div>
         </Router>
       </div>

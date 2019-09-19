@@ -2,49 +2,49 @@ const mongoose = require("mongoose");
 const requireLogin = require("../middlewares/requireLogin");
 const requireCredits = require("../middlewares/requireCredits");
 const Mailer = require("../services/Mailer");
-const surveyTemplate = require("../services/emailTemplates/surveyTemplate");
+const rsvpTemplate = require("../services/emailTemplates/rsvpTemplate");
 const _ = require("lodash");
 const { Path } = require("path-parser");
 const { URL } = require("url");
 
-const Survey = mongoose.model("surveys");
+const RSVP = mongoose.model("rsvps");
 
 module.exports = app => {
-  app.get("/api/surveys", requireLogin, async (req, res) => {
-    const surveys = await Survey.find({ _user: req.user.id }).select(
+  app.get("/api/rsvps", requireLogin, async (req, res) => {
+    const rsvps = await RSVP.find({ _user: req.user.id }).select(
       "-recipients"
     );
-    res.send(surveys);
+    res.send(rsvps);
   });
 
-  app.get("/api/surveys/:surveyId", requireLogin, async (req, res) => {
-    const p = new Path("/api/surveys/:surveyId/:choice");
+  app.get("/api/rsvps/:rsvpId", requireLogin, async (req, res) => {
+    const p = new Path("/api/rsvps/:rsvpId/:choice");
 
     const match = p.test(new URL(req.body.url).pathname);
 
-    const surveys = await Survey.find({ _id: match.surveyId }).select(
+    const rsvps = await RSVP.find({ _id: match.rsvpId }).select(
       "-recipients"
     );
-    res.send(surveys);
+    res.send(rsvps);
   });
 
-  app.post("/api/surveys/webhooks", (req, res) => {
-    const p = new Path("/api/surveys/:surveyId/:choice");
+  app.post("/api/rsvps/webhooks", (req, res) => {
+    const p = new Path("/api/rsvps/:rsvpId/:choice");
 
     const events = _.chain(req.body)
       .map(({ email, url }) => {
         const match = p.test(new URL(url).pathname);
 
         if (match) {
-          return { email, surveyId: match.surveyId, choice: match.choice };
+          return { email, rsvpId: match.rsvpId, choice: match.choice };
         }
       })
       .compact()
-      .uniqBy("email", "surveyId")
-      .each(({ email, surveyId, choice }) => {
-        Survey.updateOne(
+      .uniqBy("email", "rsvpId")
+      .each(({ email, rsvpId, choice }) => {
+        RSVP.updateOne(
           {
-            _id: surveyId,
+            _id: rsvpId,
             recipients: { $elemMatch: { email: email, responded: false } }
           },
           {
@@ -59,16 +59,16 @@ module.exports = app => {
     res.send({});
   });
 
-  app.get("/api/surveys/:surveyId/:choice", (req, res) => {
+  app.get("/api/rsvps/:rsvpId/:choice", (req, res) => {
     res.send("Thanks for voting!");
   });
 
-  app.post("/api/surveys", requireLogin, requireCredits, async (req, res) => {
+  app.post("/api/rsvps", requireLogin, requireCredits, async (req, res) => {
     const { title, subject, body, emails, status } = req.body;
     const recipients = emails
       .split(",")
       .map(email => ({ email: email.trim() }));
-    const survey = new Survey({
+    const rsvp = new RSVP({
       title,
       subject,
       body,
@@ -81,11 +81,11 @@ module.exports = app => {
     });
 
     if (status && status == 1) {
-      const mailer = new Mailer(survey, surveyTemplate(survey));
+      const mailer = new Mailer(rsvp, rsvpTemplate(rsvp));
 
       try {
         await mailer.send();
-        await survey.save();
+        await rsvp.save();
         req.user.credits--;
         const user = await req.user.save();
 
@@ -94,19 +94,19 @@ module.exports = app => {
         res.status(422).send(err);
       }
     } else {
-      await survey.save();
+      await rsvp.save();
       res.send(req.user);
     }
   });
 
-  app.put("/api/surveys", requireLogin, async (req, res) => {
+  app.put("/api/rsvps", requireLogin, async (req, res) => {
     const { title, subject, body, emails, status, _id } = req.body;
 
     const recipients = emails
       .split(",")
       .map(email => ({ email: email.trim() }));
 
-    const survey = await Survey.findOneAndUpdate(
+    const rsvp = await RSVP.findOneAndUpdate(
       {
         _id: _id
       },
@@ -128,7 +128,7 @@ module.exports = app => {
     ).exec();
 
     if (status && status == 1) {
-      const mailer = new Mailer(survey, surveyTemplate(survey));
+      const mailer = new Mailer(rsvp, rsvpTemplate(rsvp));
 
       try {
         await mailer.send();
