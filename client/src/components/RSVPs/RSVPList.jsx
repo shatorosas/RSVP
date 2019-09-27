@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { fetchRSVPs } from "../../actions";
 import ReactApexChart from "react-apexcharts";
 import { Link } from "react-router-dom";
+import "./rsvpList.css";
 
 class RSVPList extends React.Component {
   componentDidMount() {
@@ -29,7 +30,7 @@ class RSVPList extends React.Component {
       return (
         <div key={rsvp._id} className="col s12 m12 l12">
           <h5 className="header">{rsvp.title}</h5>
-          <div className="card horizontal" style={{ height: "300px" }}>
+          <div className="card horizontal rsvp-list__card" >
             {rsvp.status === 1 ? (
               <ReactApexChart
                 style={{ marginTop: "20px" }}

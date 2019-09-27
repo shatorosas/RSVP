@@ -87,6 +87,14 @@ class Header extends React.Component {
             </Link>
           </li>
           <li>
+            <Link to="/contacts">
+              <i className="material-icons" style={{ margin: "0 2px 0 0" }}>
+                perm_contact_calendar
+              </i>
+              Contacts
+            </Link>
+          </li>
+          <li>
             <Link to="/rsvps">
               <i className="material-icons" style={{ margin: "0 2px 0 0" }}>
                 library_books

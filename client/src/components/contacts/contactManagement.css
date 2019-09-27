@@ -1,0 +1,14 @@
+.contact-management__container {
+  
+  margin-top: 20px;
+}
+
+.contact-management__form {
+  
+}
+
+.contact-management__list {
+  overflow: auto;
+  height: 92vh;
+  padding-bottom: 20px;
+}

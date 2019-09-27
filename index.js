@@ -7,6 +7,7 @@ const bodyParser = require("body-parser");
 
 require("./models/User");
 require("./models/RSVP");
+require("./models/Contact");
 require("./services/passport");
 
 mongoose.connect(keys.mongoURI);
@@ -29,6 +30,7 @@ app.use(bodyParser.json());
 require("./routes/authRoutes")(app);
 require("./routes/billingRoutes")(app);
 require("./routes/rsvpRoutes")(app);
+require("./routes/contactRoutes")(app);
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));

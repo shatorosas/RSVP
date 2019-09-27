@@ -3,11 +3,14 @@ import { Router, Route } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actions from "../actions";
 import history from "../history";
+import "./app.css";
 
 import Header from "./Header";
 import Landing from "./Landing";
 import RSVPWizard from "./RSVPs/RSVPWizard";
 import Dashboard from "./Dashboard";
+import ContactManagement from "./contacts/ContactManagement";
+import ContactForm from "./contacts/ContactForm";
 
 class App extends React.Component {
   componentDidMount() {
@@ -28,10 +31,12 @@ class App extends React.Component {
         <Router history={history}>
           <Header />
           <Route path="/" exact component={Landing} />
+          <Route path="/contacts" exact component={ContactManagement} />
           <div style={{ height: "100vh", width: "100%", overflow: "auto" }}>
             <Route path="/rsvp" exact component={RSVPWizard} />
             <Route path="/rsvp/:rsvpId" exact component={RSVPWizard} />
             <Route path="/rsvps" exact component={Dashboard} />
+            <Route path="/contactForm" exact component={ContactForm} />
           </div>
         </Router>
       </div>

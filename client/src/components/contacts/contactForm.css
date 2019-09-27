@@ -1,0 +1,23 @@
+.contactForm__form{
+    background-color: rgba(255, 255, 255, 0.6);
+    padding:10px 20px 20px 20px;
+    border-radius: 4px;
+    margin-left:20px;
+    margin-bottom:20px;
+}
+
+.contactForm__form div{
+    margin-bottom: 10px;
+}
+
+.contactForm__form label{
+    color:#333;
+}
+
+.contactForm__form div:last-child{
+    margin-bottom: 0px;
+}
+
+.new{
+    margin-top:20px
+}

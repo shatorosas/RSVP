@@ -1,5 +1,12 @@
 import axios from "axios";
-import { FETCH_USER, FETCH_RSVPS, FETCH_RSVP } from "./types";
+import {
+  FETCH_USER,
+  FETCH_RSVPS,
+  FETCH_RSVP,
+  FETCH_CONTACTS,
+  ADD_CONTACT,
+  UPDATE_CONTACT
+} from "./types";
 import history from "../history";
 
 export const fetchUser = () => async dispatch => {
@@ -36,7 +43,6 @@ export const submitRSVP = values => async dispatch => {
 
 export const saveRSVP = values => async dispatch => {
   values.status = 0;
-  console.log(values._id);
   const res =
     values._id === undefined
       ? await axios.post("/api/rsvps", values)
@@ -55,4 +61,21 @@ export const fetchRSVPs = () => async dispatch => {
 export const fetchRSVP = rsvpId => async dispatch => {
   const res = await axios.get(`/api/rsvps/${rsvpId}`);
   dispatch({ type: FETCH_RSVP, payload: res.data });
+};
+
+export const fetchContacts = () => async dispatch => {
+  const res = await axios.get("/api/contacts");
+  dispatch({ type: FETCH_CONTACTS, payload: res.data });
+};
+
+export const saveContact = values => async dispatch => {
+  const updating = values._id === undefined ? false : true;
+  const res = !updating
+    ? await axios.post("/api/contacts", values)
+    : await axios.put("/api/contacts", values);
+
+  history.push("/contacts");
+  updating
+    ? dispatch({ type: UPDATE_CONTACT, payload: res.data })
+    : dispatch({ type: ADD_CONTACT, payload: res.data });
 };

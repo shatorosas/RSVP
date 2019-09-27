@@ -5,7 +5,6 @@ import * as actions from "../../actions";
 
 const RSVPFormReview = ({ onBack, formValues, submitRSVP, saveRSVP }) => {
   const component = formFields.map(({ name, label, multiline }) => {
-    console.log(multiline);
     return (
       <div key={name}>
         <label>{label}</label>
