@@ -72,7 +72,7 @@ const Landing = () => {
             <ul className="social-links">
               <li>
                 {" "}
-                <a href="https://github.com/shatorosas" target="_blank">
+                <a href="https://github.com/shatorosas/RSVP" target="_blank">
                   {" "}
                   <i className="icon ion-logo-github"></i>
                 </a>{" "}
