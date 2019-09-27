@@ -30,15 +30,19 @@ class ContactManagement extends React.Component {
         ? this.state.selectedContact._id === contact._id
         : false;
       return (
-        <div key={contact._id} onClick={() => this.onSelectContact(contact)}>
-          <Contact
-            contact={contact}
-            onSelectContact={this.onSelectContact}
-            className={
-              !this.state.selectedContact ? "col s12 m12 l5" : "col s12 m12 l12"
-            }
-            selected={isSelected}
-          />
+        <div key={contact._id}>
+          <div onClick={() => this.onSelectContact(contact)}>
+            <Contact
+              contact={contact}
+              onSelectContact={this.onSelectContact}
+              className={
+                !this.state.selectedContact
+                  ? "col s12 m12 l5"
+                  : "col s12 m12 l12"
+              }
+              selected={isSelected}
+            />
+          </div>
           {isSelected ? this.renderForm() : null}
         </div>
       );
