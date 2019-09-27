@@ -29,6 +29,7 @@
   height: 100vh;
   width: 100%;
   overflow: auto;
+  background-color: rgb(68, 68, 68);
 }
 
 section {
@@ -41,8 +42,16 @@ section {
   width: 400px;
 }
 
+.instructions {
+  color: rgb(255, 255, 255);
+}
+
+.card-content {
+  color: #000;
+}
+
 footer {
-  background-color: rgba(51, 51, 51, 0.9);
+  background-color: rgba(0, 0, 0, 0.9);
   padding: 10px;
   font-size: 80%;
   position: fixed;
@@ -110,4 +119,3 @@ footer a:active {
 .ion-logo-linkedin:active {
   color: #007bb5;
 }
-

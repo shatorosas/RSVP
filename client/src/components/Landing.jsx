@@ -22,36 +22,36 @@ const Landing = () => {
         <div className="row">
           <h2>Simple as 1, 2, 3</h2>
         </div>
-        <div class="row">
-          <div class="col s12 m6 l4">
-            <div class="card hoverable">
-              <div class="card-image ">
-                  <img src="1.png" />
-                <span class="card-title">Click</span>
+        <div className="row">
+          <div className="col s12 m6 l4">
+            <div className="card hoverable">
+              <div className="card-image ">
+                <img src="1.png" alt="1" />
+                <span className="card-title">Click</span>
               </div>
-              <div class="card-content">
+              <div className="card-content">
                 <p>Click Add credits.</p>
               </div>
             </div>
           </div>
-          <div class="col s12 m6 l4">
-            <div class="card hoverable">
-              <div class="card-image black">
-                <img src="2.png" />
-                <span class="card-title">Add</span>
+          <div className="col s12 m6 l4">
+            <div className="card hoverable">
+              <div className="card-image grey lighten-2">
+                <img src="2.png" alt="2" />
+                <span className="card-title ">Add</span>
               </div>
-              <div class="card-content">
+              <div className="card-content">
                 <p>Use the Demo creadit card number.</p>
               </div>
             </div>
           </div>
-          <div class="col s12 m6 l4">
-            <div class="card hoverable">
-              <div class="card-image black">
-                <img src="3.png" />
-                <span class="card-title">Send!</span>
+          <div className="col s12 m6 l4">
+            <div className="card hoverable">
+              <div className="card-image ">
+                <img src="3.png" alt="3" />
+                <span className="card-title">Send!</span>
               </div>
-              <div class="card-content">
+              <div className="card-content">
                 <p>Start sending RSVPs to anyone you want!</p>
               </div>
             </div>
@@ -64,28 +64,35 @@ const Landing = () => {
             <ul className="footer-nav">
               <li>
                 {" "}
-                <a href="https://gabrielrosas.herokuapp.com/">About us</a>{" "}
+                <a
+                  href="https://gabrielrosas.herokuapp.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  About us
+                </a>{" "}
               </li>
             </ul>
           </div>
           <div className="col s6 m6 l6">
             <ul className="social-links">
               <li>
-                {" "}
-                <a href="https://github.com/shatorosas/RSVP" target="_blank">
-                  {" "}
+                <a
+                  href="https://github.com/shatorosas/RSVP"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <i className="icon ion-logo-github"></i>
-                </a>{" "}
+                </a>
               </li>
               <li>
-                {" "}
                 <a
                   href="https://www.linkedin.com/in/gabriel-rosas/"
                   target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  {" "}
                   <i className="icon ion-logo-linkedin "></i>
-                </a>{" "}
+                </a>
               </li>
             </ul>
           </div>
