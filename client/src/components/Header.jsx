@@ -117,7 +117,8 @@ class Header extends React.Component {
         <nav>
           <div className="nav-wrapper">
             <Link
-              to={this.props.auth ? "/rsvps" : "/"}
+              /*to={this.props.auth ? "/rsvps" : "/"}*/
+              to="/"
               className="left "
               style={{ height: "45px" }}
             >

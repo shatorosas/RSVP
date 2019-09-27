@@ -25,33 +25,46 @@ class ContactManagement extends React.Component {
   }
 
   renderContacts() {
-    return this.props.contacts.map(contact => {
-      const isSelected = this.state.selectedContact
-        ? this.state.selectedContact._id === contact._id
-        : false;
-      return (
-        <div key={contact._id}>
-          <div onClick={() => this.onSelectContact(contact)}>
-            <Contact
-              contact={contact}
-              onSelectContact={this.onSelectContact}
-              className={
-                !this.state.selectedContact
-                  ? "col s12 m12 l5"
-                  : "col s12 m12 l12"
-              }
-              selected={isSelected}
-            />
+    if (this.props.contacts.length > 0) {
+      return this.props.contacts.map(contact => {
+        const isSelected = this.state.selectedContact
+          ? this.state.selectedContact._id === contact._id
+          : false;
+        return (
+          <div key={contact._id}>
+            <div onClick={() => this.onSelectContact(contact)}>
+              <Contact
+                contact={contact}
+                onSelectContact={this.onSelectContact}
+                className={
+                  !this.state.selectedContact
+                    ? "col s12 m12 l5"
+                    : "col s12 m12 l12"
+                }
+                selected={isSelected}
+              />
+            </div>
+            {isSelected ? this.renderForm() : null}
           </div>
-          {isSelected ? this.renderForm() : null}
+        );
+      });
+    } else {
+      return (
+        <div className="empty-container">
+          <div>
+            <h2>You can start adding contacts with the add button!</h2>
+          </div>
+          <div>
+            <img className="arrow" src="arrow.png" alt="arrow" />
+          </div>
         </div>
       );
-    });
+    }
   }
 
   renderForm() {
     return (
-      <div className="contact-management__form col s12 m12 l12">
+      <div className="contact-management__form col s12 m12 l12 ">
         <ContactForm
           selectedContact={this.state.selectedContact}
           editing={true}
@@ -63,7 +76,7 @@ class ContactManagement extends React.Component {
 
   render() {
     return (
-      <div className="container contact-management__container">
+      <div className={"container contact-management__container"}>
         <div className="contact-management__list row">
           {this.renderContacts()}
         </div>

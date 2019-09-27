@@ -11,63 +11,76 @@ class RSVPList extends React.Component {
   }
 
   renderRSVPs() {
-    return this.props.rsvps.reverse().map(rsvp => {
-      let notResponded = (rsvp.totalRecipients || 0) - rsvp.yes - rsvp.no;
-      notResponded = notResponded < 0 ? 0 : notResponded;
+    if (this.props.rsvps.length) {
+      return this.props.rsvps.reverse().map(rsvp => {
+        let notResponded = (rsvp.totalRecipients || 0) - rsvp.yes - rsvp.no;
+        notResponded = notResponded < 0 ? 0 : notResponded;
 
-      var conf = {
-        options: {
-          labels: ["Yes", "No", "Not responded"],
-          colors: ["#3EAD26", "#C40404", "#FFC300"],
-          legend: {
-            position: "bottom",
-            horizontalAlign: "center"
-          }
-        },
-        series: [rsvp.yes, rsvp.no, notResponded]
-      };
+        var conf = {
+          options: {
+            labels: ["Yes", "No", "Not responded"],
+            colors: ["#3EAD26", "#C40404", "#FFC300"],
+            legend: {
+              position: "bottom",
+              horizontalAlign: "center"
+            }
+          },
+          series: [rsvp.yes, rsvp.no, notResponded]
+        };
 
-      return (
-        <div key={rsvp._id} className="col s12 m12 l12">
-          <h5 className="header">{rsvp.title}</h5>
-          <div className="card horizontal rsvp-list__card" >
-            {rsvp.status === 1 ? (
-              <ReactApexChart
-                style={{ marginTop: "20px" }}
-                options={conf.options}
-                series={conf.series}
-                type="pie"
-                width="300"
-              />
-            ) : (
-              <img
-                alt="draft"
-                src="Draft.png"
-                width="300"
-                style={{ objectFit: "contain" }}
-              />
-            )}
-            <div className="card-stacked">
-              <div className="card-content" style={{ overflow: "auto" }}>
-                <p>{rsvp.body}</p>
-              </div>
-              <div className="card-action">
-                <Link
-                  to={`/rsvp/${rsvp._id}`}
-                  className={
-                    rsvp.status === 0
-                      ? "waves-effect waves-light btn right"
-                      : "waves-effect waves-light btn right disabled"
-                  }
-                >
-                  <i className="material-icons right ">edit</i>Edit
-                </Link>
+        return (
+          <div key={rsvp._id} className="col s12 m12 l12">
+            <h5 className="header">{rsvp.title}</h5>
+            <div className="card horizontal rsvp-list__card">
+              {rsvp.status === 1 ? (
+                <ReactApexChart
+                  style={{ marginTop: "20px" }}
+                  options={conf.options}
+                  series={conf.series}
+                  type="pie"
+                  width="300"
+                />
+              ) : (
+                <img
+                  alt="draft"
+                  src="Draft.png"
+                  width="300"
+                  style={{ objectFit: "contain" }}
+                />
+              )}
+              <div className="card-stacked">
+                <div className="card-content" style={{ overflow: "auto" }}>
+                  <p>{rsvp.body}</p>
+                </div>
+                <div className="card-action">
+                  <Link
+                    to={`/rsvp/${rsvp._id}`}
+                    className={
+                      rsvp.status === 0
+                        ? "waves-effect waves-light btn right"
+                        : "waves-effect waves-light btn right disabled"
+                    }
+                  >
+                    <i className="material-icons right ">edit</i>Edit
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
+        );
+      });
+    } else {
+      return (
+        <div className="empty-container">
+          <div>
+            <h2>You can start adding RSVPs with the add button!</h2>
+          </div>
+          <div>
+            <img className="arrow" src="arrow.png" alt="arrow" />
+          </div>
         </div>
       );
-    });
+    }
   }
 
   render() {

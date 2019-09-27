@@ -1,4 +1,39 @@
-.rsvp-list__card{
-    height:300px;
-    background-color: rgba(255, 255, 255, 0.6);
+.rsvp-list__card {
+  height: 300px;
+  background-color: rgba(255, 255, 255, 0.6);
+  display: flex;
+  align-content: center;
+}
+
+.arrow {
+  margin-left: auto;
+  bottom: 0;
+  width: 35vw;
+  height: auto;
+  align-self: flex-end;
+}
+
+.empty-container {
+  height: 93vh;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+
+.empty-container:first-child {
+  align-self: center;
+}
+
+.empty-container:first-child h2 {
+  align-self: center;
+}
+
+.empty-container:last-child {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-content: center;
+  align-items: center;
 }

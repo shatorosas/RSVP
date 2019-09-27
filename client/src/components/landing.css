@@ -1,0 +1,113 @@
+.welcome {
+  padding-top: 20px;
+
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-bottom: 20px;
+  margin-bottom: 20px;
+  height: 60vh;
+
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-attachment: fixed;
+}
+
+.welcome h2 {
+  margin-top: 300px;
+  margin-bottom: 0px;
+  text-align: left;
+  margin-left: 100px;
+  color: rgb(255, 255, 255);
+}
+
+.btn-landing {
+  margin-top: 20px;
+  margin-left: 100px;
+}
+
+.landing__main {
+  height: 100vh;
+  width: 100%;
+  overflow: auto;
+}
+
+section {
+  padding-bottom: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 150px;
+}
+.logo {
+  width: 400px;
+}
+
+footer {
+  background-color: rgba(51, 51, 51, 0.9);
+  padding: 10px;
+  font-size: 80%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+}
+
+footer .row {
+  margin-bottom: 0px;
+}
+
+.footer-nav {
+  list-style: none;
+  float: left;
+  margin-top: 0px;
+}
+
+.social-links {
+  list-style: none;
+  float: right;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.footer-nav li,
+.social-links li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.footer-nav li:last-child,
+.social-links li:last-child {
+  margin-right: 0;
+}
+
+footer a:link,
+footer a:visited {
+  text-decoration: none;
+  border: none;
+  color: #888;
+  -webkit-transition: color 0.2s;
+  transition: color 0.2s;
+}
+
+footer a:hover,
+footer a:active {
+  text-decoration: none;
+  color: #ddd;
+}
+
+.ion-logo-github,
+.ion-logo-linkedin {
+  -webkit-transition: color 0.2s;
+  transition: color 0.2s;
+}
+
+.social-links li a:link,
+.social-links li a:visited {
+  font-size: 150%;
+}
+
+.ion-logo-linkedin:hover,
+.ion-logo-linkedin:active {
+  color: #007bb5;
+}
+
